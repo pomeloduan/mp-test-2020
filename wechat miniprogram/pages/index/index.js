@@ -5,15 +5,15 @@ const app = getApp()
 Page({
   data: {
     date: '2000-01-01',
-    abc:"",
-    sx:"",
+    abc: "",
+    sx: "",
     xz: "",
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -24,7 +24,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -46,7 +46,7 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -59,11 +59,11 @@ Page({
     var sxlist = "猴鸡狗猪鼠牛虎兔龙蛇马羊"
     var xzdate = 31 * newDate.getMonth() + newDate.getDate()
     var a = 0
-    var i=0
-    var xzlist = [[1, 19, '摩羯座'], [2, 18, '水瓶座'], [3, 20, '双鱼座'], [4, 20, '白羊座'], [5, 20, '金牛座'], [6, 21, '双子座'], [7, 22, '巨蟹座'], [8, 22, '狮子座'], [9, 22, '处女座'], [10, 22, '天秤座'], [11, 21, '天蝎座'], [12, 21, '射手座'], [12, 31, '摩羯座']]
+    var i = 0
+    var xzlist = [{ 月: 1, 日: 19, 名: '摩羯座' }, { 月: 2, 日: 18, 名: '水瓶座' }, { 月: 3, 日: 20, 名: '双鱼座' }, { 月: 4, 日: 20, 名: '白羊座' }, { 月: 5, 日: 20, 名: '金牛座' }, { 月: 6, 日: 21, 名: '双子座' }, { 月: 7, 日: 22, 名: '巨蟹座' }, { 月: 8, 日: 22, 名: '狮子座' }, { 月: 9, 日: 22, 名: '处女座' }, { 月: 10, 日: 22, 名: '天秤座' }, { 月: 11, 日: 21, 名: '天蝎座' }, { 月: 12, 日: 21, 名: '射手座' }, { 月: 12, 日: 31, 名: '摩羯座' }]
     for (i = 0; i < xzlist.length; i++) {
-      if (xzdate <= (xzlist[i][0] - 1) * 31 + xzlist[i][1]) {
-        console.log(a = xzlist[i][2])
+      if (xzdate <= (xzlist[i].月 - 1) * 31 + xzlist[i].日) {
+        console.log(a = xzlist[i].名)
         break
       }
     }
@@ -72,6 +72,6 @@ Page({
       abc: (newDate.getMonth() + 1) + '月' + newDate.getDate() + '日',
       sx: sxlist[newDate.getFullYear() % 12],
       xz: a
-      })
+    })
   },
 })
